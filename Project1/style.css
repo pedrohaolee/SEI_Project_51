@@ -1,0 +1,23 @@
+/* .playfield {
+  width: 920px;
+  height: 920px;
+} */
+
+#sudokuTable {
+  font-size: 250%;
+  float: left;
+  display: block;
+  border: 1px solid black;
+  text-align: center;
+  /* line-height: 99px; */
+  background-color: #f2f2f2;
+}
+
+td {
+  border: 1px solid black;
+  width: 1.2em;
+  text-align: center;
+  /* line-height: 99px; */
+  border-radius: 10px;
+  background-color: #f2f2f2;
+}

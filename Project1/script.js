@@ -140,7 +140,7 @@ function solveSudoku(startingGrid) {
   //   //   if (firstCellLos == [-1, -1]) return startingGrid;
 
   for (num1 of generateRandomizedArray()) {
-    console.log("counter = " + counter + " num = " + num1);
+    // console.log("counter = " + counter + " num = " + num1);
     counter++;
     if (gridSafe(startingGrid, firstCellLoc, num1)) {
       startingGrid[firstCellLoc[0]][firstCellLoc[1]] = num1;
@@ -152,10 +152,31 @@ function solveSudoku(startingGrid) {
 }
 
 // console.log(solveSudoku(initializeGrid()));
-const sudokuMat = solveSudoku(initializeGrid());
-const newDiv = document.createElement("p");
-newDiv.innerText = sudokuMat;
-document.querySelector();
+
+// const solvedMat = solveSudoku(initializeGrid());
+
+// function initDisplay(inputMat) {
+
+const sudokuDisplayTable = document.querySelector("#sudokuTable");
+console.log(sudokuDisplayTable);
+for (i = 0; i < 9; i++) {
+  const newRow = document.createElement("tr");
+  sudokuDisplayTable.append(newRow);
+  for (j = 0; j < 9; j++) {
+    const newCell = document.createElement("td");
+    newCell.innerText = testMat1[i][j];
+    newRow.append(newCell);
+  }
+}
+// }
+
+// initDisplay(testMat1);
+
+// console.log(sudokuDisplayTable);
+// addToDisplay(testMat1);
+// newDiv.innerText = sudokuMat;
+// document.querySelector("");
+// console.log();
 
 // console.log(solveSudoku(InitializeGrid()));
 
@@ -164,4 +185,4 @@ document.querySelector();
 // console.log(solveSudoku(testMat3));
 // console.log(solveSudoku(testMat4));
 
-// console.log(testMat1[1][1]);
+console.log(testMat1.length());
