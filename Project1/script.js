@@ -155,7 +155,7 @@ function solveSudoku(startingGrid) {
 
 const solvedMat = solveSudoku(initializeGrid());
 
-function initDisplay(inputMat, holeInfo) {
+function initDisplay(inputMat) {
   const sudokuDisplayTable = document.querySelector("#sudokuTable");
   console.log(sudokuDisplayTable);
   for (i = 0; i < 9; i++) {
@@ -165,14 +165,28 @@ function initDisplay(inputMat, holeInfo) {
       const newCell = document.createElement("td");
       newCell.innerText = inputMat[i][j];
       newCell.classList.add("sudokuCell");
-      if (i === holeInfo.rowIdx && j === holeInfo.colIdx) {
+
+      if (inputMat[i][j] === 0) {
+        const newInput = document.createElement("input");
+        newCell.innerText = "";
+        newInput.setAttribute("type", "number");
+        newInput.setAttribute(
+          "onkeypress",
+          "return event.charCode >= 49 && event.charCode <= 57"
+        );
+        // newInput.setAttribute(max, 9);
+        // newInput.setAttribute(max, 9);
+        newInput.classList.add("holesToSolve");
+        newInput.setAttribute("id", "row" + i + "col" + j);
+        newCell.append(newInput);
       }
       newRow.append(newCell);
     }
   }
 }
 
-function generatePlayBoard(startingGrid, holeNum) {
+function generatePlayBoard(inputGrid, holeNum) {
+  const startingGrid = structuredClone(inputGrid);
   const holeVal = [];
   const rowIdxArray = generateRandomizedArray();
   const colIdxArray = generateRandomizedArray();
@@ -183,7 +197,7 @@ function generatePlayBoard(startingGrid, holeNum) {
       colIdx: colIdxArray[i],
       val: startingGrid[rowIdxArray[i]][colIdxArray[i]],
     });
-    startingGrid[rowIdxArray[i]][colIdxArray[i]] = [];
+    startingGrid[rowIdxArray[i]][colIdxArray[i]] = 0;
     i++;
   }
   return [startingGrid, holeVal];
@@ -193,8 +207,30 @@ const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 5);
 // console.log(holeInfo);
 // console.log(PlayBoard);
 
-// initDisplay(solvedMat);
 initDisplay(PlayBoard);
+
+const sudokuTable = document.querySelector("#sudokuTable");
+let mistakeCounter = 0;
+sudokuTable.addEventListener("keyup", (event) => {
+  cellID = event.target.id;
+  cellIDSplit = [...cellID];
+  cellValue = event.target.value;
+  console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
+  if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+    mistakeCounter++;
+    document.getElementById(cellID).style.backgroundColor = "red";
+    document.getElementById("mCount").innerText =
+      "Mistake: " + mistakeCounter + "/3";
+    // console.log(document.getElementById("mCount"));
+    if (mistakeCounter >= 3) alert("three strikes, you are out! ");
+  }
+});
+console.log(solvedMat);
+// const a1 = "row4col4";
+// const b1 = [...a1];
+// console.log(b1[3], b1[7]);
+// console.log(holeInfo);
+// initDisplay(PlayBoard, holeInfo);
 
 // initDisplay(testMat1);
 
