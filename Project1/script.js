@@ -153,22 +153,48 @@ function solveSudoku(startingGrid) {
 
 // console.log(solveSudoku(initializeGrid()));
 
-// const solvedMat = solveSudoku(initializeGrid());
+const solvedMat = solveSudoku(initializeGrid());
 
-// function initDisplay(inputMat) {
-
-const sudokuDisplayTable = document.querySelector("#sudokuTable");
-console.log(sudokuDisplayTable);
-for (i = 0; i < 9; i++) {
-  const newRow = document.createElement("tr");
-  sudokuDisplayTable.append(newRow);
-  for (j = 0; j < 9; j++) {
-    const newCell = document.createElement("td");
-    newCell.innerText = testMat1[i][j];
-    newRow.append(newCell);
+function initDisplay(inputMat, holeInfo) {
+  const sudokuDisplayTable = document.querySelector("#sudokuTable");
+  console.log(sudokuDisplayTable);
+  for (i = 0; i < 9; i++) {
+    const newRow = document.createElement("tr");
+    sudokuDisplayTable.append(newRow);
+    for (j = 0; j < 9; j++) {
+      const newCell = document.createElement("td");
+      newCell.innerText = inputMat[i][j];
+      newCell.classList.add("sudokuCell");
+      if (i === holeInfo.rowIdx && j === holeInfo.colIdx) {
+      }
+      newRow.append(newCell);
+    }
   }
 }
-// }
+
+function generatePlayBoard(startingGrid, holeNum) {
+  const holeVal = [];
+  const rowIdxArray = generateRandomizedArray();
+  const colIdxArray = generateRandomizedArray();
+  let i = 0;
+  while (holeVal.length < holeNum) {
+    holeVal.push({
+      rowIdx: rowIdxArray[i],
+      colIdx: colIdxArray[i],
+      val: startingGrid[rowIdxArray[i]][colIdxArray[i]],
+    });
+    startingGrid[rowIdxArray[i]][colIdxArray[i]] = [];
+    i++;
+  }
+  return [startingGrid, holeVal];
+}
+
+const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 5);
+// console.log(holeInfo);
+// console.log(PlayBoard);
+
+// initDisplay(solvedMat);
+initDisplay(PlayBoard);
 
 // initDisplay(testMat1);
 
@@ -185,4 +211,4 @@ for (i = 0; i < 9; i++) {
 // console.log(solveSudoku(testMat3));
 // console.log(solveSudoku(testMat4));
 
-console.log(testMat1.length());
+// console.log(testMat1.length());
