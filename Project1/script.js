@@ -127,12 +127,14 @@ function nextCell(inputGrid) {
   ];
 }
 let counter = 0;
+let sudokuGenerated = false;
 
 function solveSudoku(startingGrid) {
   //   return nextCell(startingGrid) == "[-1, -1]" ? true : false;
   const firstCellLoc = nextCell(startingGrid);
   if (firstCellLoc[0] === -1 && firstCellLoc[1] === -1) {
     console.log("ALL FINISHED");
+    sudokuGenerated = true;
     return startingGrid;
   }
 
@@ -153,7 +155,7 @@ function solveSudoku(startingGrid) {
 
 // console.log(solveSudoku(initializeGrid()));
 
-const solvedMat = solveSudoku(initializeGrid());
+// const solvedMat = solveSudoku(initializeGrid());
 
 function initDisplay(inputMat) {
   const sudokuDisplayTable = document.querySelector("#sudokuTable");
@@ -178,6 +180,8 @@ function initDisplay(inputMat) {
         // newInput.setAttribute(max, 9);
         newInput.classList.add("holesToSolve");
         newInput.setAttribute("id", "row" + i + "col" + j);
+        newInput.style.background = "none";
+        // newInput.style.fontSize = "0.4em";
         newCell.append(newInput);
       }
       newRow.append(newCell);
@@ -203,29 +207,107 @@ function generatePlayBoard(inputGrid, holeNum) {
   return [startingGrid, holeVal];
 }
 
-const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 5);
+// const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 5);
 // console.log(holeInfo);
 // console.log(PlayBoard);
 
-initDisplay(PlayBoard);
+// initDisplay(PlayBoard);
 
-const sudokuTable = document.querySelector("#sudokuTable");
-let mistakeCounter = 0;
-sudokuTable.addEventListener("keyup", (event) => {
-  cellID = event.target.id;
-  cellIDSplit = [...cellID];
-  cellValue = event.target.value;
-  console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
-  if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-    mistakeCounter++;
-    document.getElementById(cellID).style.backgroundColor = "red";
-    document.getElementById("mCount").innerText =
-      "Mistake: " + mistakeCounter + "/3";
-    // console.log(document.getElementById("mCount"));
-    if (mistakeCounter >= 3) alert("three strikes, you are out! ");
+// const sudokuTable = document.querySelector("#sudokuTable");
+// let mistakeCounter = 0;
+// sudokuTable.addEventListener("keyup", (event) => {
+//   cellID = event.target.id;
+//   cellIDSplit = [...cellID];
+//   cellValue = event.target.value;
+//   console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
+//   if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+//     mistakeCounter++;
+//     document.getElementById(cellID).style.backgroundColor = "red";
+//     document.getElementById("mCount").innerText =
+//       "Mistake: " + mistakeCounter + "/3";
+//     // console.log(document.getElementById("mCount"));
+//     if (mistakeCounter >= 3) alert("three strikes, you are out! ");
+//   }
+//   if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+//     document.getElementById(cellID).style.background = "none";
+//   }
+// });
+
+function formatTime(timeSec) {
+  let timeMin = Math.floor(timeSec / 60);
+  if (timeMin < 10) {
+    timeMin = `0${timeMin}`;
   }
-});
+  let leftSec = timeSec % 60;
+  if (leftSec < 10) {
+    leftSec = `0${leftSec}`;
+  }
+  return `${timeMin}:${leftSec}`;
+}
+timeLimit = 10;
+const solvedMat = solveSudoku(initializeGrid());
+
+function startTimer(timeLimit) {
+  let timePassed = 0;
+  let myTimer = setInterval(() => {
+    timePassed++;
+    let timeLeft = timeLimit - timePassed;
+    document.getElementById("gameTimeLeft").innerText = formatTime(timeLeft);
+    // let dashArray = `${timeLeft} ${timeLimit}`;
+    // document
+    //   .getElementById("timerCircle")
+    //   .setAttribute("stroke-dasharray", dashArray);
+    // console.log(dashArray);
+    if (timeLeft < 5) {
+      document.getElementById("gameTimeLeft").style.color = "red";
+    }
+    if (timeLeft === 0) {
+      alert("Time is up!!!");
+      clearInterval(myTimer);
+    }
+  }, 1000);
+}
+
+function checkSudokuGenFinish() {
+  if (sudokuGenerated === false) {
+    setTimeout(checkSudokuGenFinish, 100);
+  }
+}
+
+function startGamePlay(holeNum) {
+  checkSudokuGenFinish();
+  // const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 30);
+  document.getElementById("playfield").innerHTML =
+    '<table id="sudokuTable"></table><footer id="mCount">Mistake: 0/3</footer><footer id="gameTimeLeft"></footer>;';
+  // initDisplay(PlayBoard);
+
+  startTimer(timeLimit);
+  // console.log(holeNum);
+
+  // const sudokuTable = document.querySelector("#sudokuTable");
+  // let mistakeCounter = 0;
+  // sudokuTable.addEventListener("keyup", (event) => {
+  //   cellID = event.target.id;
+  //   cellIDSplit = [...cellID];
+  //   cellValue = event.target.value;
+  //   console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
+  //   if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+  //     mistakeCounter++;
+  //     document.getElementById(cellID).style.backgroundColor = "red";
+  //     document.getElementById("mCount").innerText =
+  //       "Mistake: " + mistakeCounter + "/3";
+  //     // console.log(document.getElementById("mCount"));
+  //     if (mistakeCounter >= 3) alert("three strikes, you are out! ");
+  //   }
+  //   if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+  //     document.getElementById(cellID).style.background = "none";
+  //   }
+  // });
+}
 console.log(solvedMat);
+
+console.log(formatTime(39));
+
 // const a1 = "row4col4";
 // const b1 = [...a1];
 // console.log(b1[3], b1[7]);
