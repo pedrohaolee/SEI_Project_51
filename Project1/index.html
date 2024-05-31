@@ -7,20 +7,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p id="playfield">
+    <div id="chooseLevel">
       <button onclick="startGamePlay(5)" class="initButton">Easy</button>
       <button onclick="startGamePlay(10)" class="initButton">Medium</button>
       <button onclick="startGamePlay(20)" class="initButton">Hard</button>
-      <table id="sudokuTable">
-        </table>    
-        <footer id="mCount"></footer>
-        <footer id="gameTimeLeft"></footer>
+    </div>
+    <div id="playfield">
+      <table id="sudokuTable"></table>
+
       <!-- <footer>
           <svg id = "timerCircle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" >
           <circle cx="5" cy="5" r="5" stroke-dasharray = "12 31"/>
         </svg>
       </footer> -->
-    </p>
+    </div>
+    <div id="gameStat">
+      <footer id="mCount"></footer>
+      <footer id="gameTimeLeft"></footer>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

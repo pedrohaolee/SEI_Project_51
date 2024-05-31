@@ -3,7 +3,11 @@
 /* margin-left: 100em;
   margin-right: 10em; 
 } */
-
+body {
+  display: block;
+  margin: auto;
+  align-items: center;
+}
 #sudokuTable {
   display: flex;
   margin-left: auto;
@@ -33,11 +37,6 @@ td {
   text-align: center;
 } */
 
-.initButton {
-  height: 4em;
-  width: 8em;
-}
-
 .holesToSolve {
   height: 2em;
   width: 2em;
@@ -51,11 +50,33 @@ td {
 }
 
 #gameTimeLeft {
-  font-size: 5em;
+  font-size: 2.5em;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-weight: bolder;
+  color: #f5f5f5;
+  text-shadow: 1px 3px 1px #919191, 1px 4px 1px #919191, 1px 5px 1px #919191,
+    1px 18px 5px rgba(16, 16, 16, 0.4), 1px 22px 10px rgba(16, 16, 16, 0.2),
+    1px 25px 35px rgba(16, 16, 16, 0.2), 1px 30px 60px rgba(16, 16, 16, 0.4);
 }
 
 #mCount {
-  font-size: 5em;
+  font-size: 2.5em;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  text-transform: uppercase;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bolder;
+  color: black;
+  text-shadow: 1px 3px 1px #919191, 1px 4px 1px #919191, 1px 5px 1px #919191,
+    1px 18px 5px rgba(16, 16, 16, 0.4), 1px 22px 10px rgba(16, 16, 16, 0.2),
+    1px 25px 35px rgba(16, 16, 16, 0.2), 1px 30px 60px rgba(16, 16, 16, 0.4);
 }
 
 tr:nth-child(4),
@@ -82,6 +103,9 @@ tr:nth-of-type(6) > td:nth-of-type(6) {
   background-color: whitesmoke;
 }
 
+p {
+  margin: auto;
+}
 /* 
 .sudokuCell:nth-of-type(1) {
   background-color: gray;
@@ -90,3 +114,87 @@ tr:nth-of-type(6) > td:nth-of-type(6) {
 tr:nth-child(3n + 1) {
   background-color: white;
 } */
+
+.initButton {
+  height: 4em;
+  width: 8em;
+  align-items: center;
+  appearance: none;
+  background-color: #fcfcfd;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395a;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+/* CSS
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #fcfcfd;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395a;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+} */
+
+.initButton:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.initButton:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-10px);
+}
+
+.initButton:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(10px);
+}

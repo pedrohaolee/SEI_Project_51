@@ -257,12 +257,31 @@ function checkSudokuGenFinish() {
 function startGamePlay(holeNum) {
   document.getElementById("sudokuTable").innerHTML = "";
   const solvedMat = solveSudoku(initializeGrid());
+  console.log(solvedMat);
   checkSudokuGenFinish();
   const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, holeNum);
   initDisplay(PlayBoard);
   startTimer(timeLimit);
   document.getElementById("mCount").innerText =
     "Mistake: " + mistakeCounter + "/3";
+  sudokuTable.addEventListener("keyup", (event) => {
+    cellID = event.target.id;
+    cellIDSplit = [...cellID];
+    cellValue = event.target.value;
+    console.log(cellID);
+    // console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
+    if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+      mistakeCounter++;
+      document.getElementById(cellID).style.backgroundColor = "red";
+      document.getElementById("mCount").innerText =
+        "Mistake: " + mistakeCounter + "/3";
+      // console.log(document.getElementById("mCount"));
+      if (mistakeCounter >= 3) alert("three strikes, you are out! ");
+    }
+    if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+      document.getElementById(cellID).style.background = "none";
+    }
+  });
 
   // console.log(holeNum);
   // const sudokuTable = document.querySelector("#sudokuTable");
@@ -291,30 +310,12 @@ function startGamePlay(holeNum) {
 // checkSudokuGenFinish();
 // document.getElementById("playfield").innerHTML =
 //   '<table id="sudokuTable"></table><footer id="mCount">Mistake: 0/3</footer><footer id="gameTimeLeft"></footer>;';
-console.log(sudokuGenerated);
+// console.log(sudokuGenerated);
 // console.log(solvedMat);
 // const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 30);
 
 // initDisplay(PlayBoard);
 // startTimer(timeLimit);
-sudokuTable.addEventListener("keyup", (event) => {
-  cellID = event.target.id;
-  cellIDSplit = [...cellID];
-  cellValue = event.target.value;
-  // console.log(cellValue);
-  // console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
-  if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-    mistakeCounter++;
-    document.getElementById(cellID).style.backgroundColor = "red";
-    document.getElementById("mCount").innerText =
-      "Mistake: " + mistakeCounter + "/3";
-    // console.log(document.getElementById("mCount"));
-    if (mistakeCounter >= 3) alert("three strikes, you are out! ");
-  }
-  if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-    document.getElementById(cellID).style.background = "none";
-  }
-});
 
 // console.log(solvedMat);
 
