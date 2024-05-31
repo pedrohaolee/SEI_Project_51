@@ -261,6 +261,8 @@ function startGamePlay(holeNum) {
   const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, holeNum);
   initDisplay(PlayBoard);
   startTimer(timeLimit);
+  document.getElementById("mCount").innerText =
+    "Mistake: " + mistakeCounter + "/3";
 
   // console.log(holeNum);
   // const sudokuTable = document.querySelector("#sudokuTable");

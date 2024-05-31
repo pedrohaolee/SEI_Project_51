@@ -33,6 +33,11 @@ td {
   text-align: center;
 } */
 
+.initButton {
+  height: 4em;
+  width: 8em;
+}
+
 .holesToSolve {
   height: 2em;
   width: 2em;
