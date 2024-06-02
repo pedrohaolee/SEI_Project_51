@@ -220,3 +220,7 @@ tr:nth-child(3n + 1) {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(10px);
 }
+
+#fireworks {
+  margin: 20px;
+}
