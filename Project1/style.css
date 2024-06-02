@@ -4,14 +4,18 @@
   margin-right: 10em; 
 } */
 body {
-  display: block;
+  display: inline-flexbox;
   margin: auto;
   align-items: center;
+  position: relative;
 }
+
 #sudokuTable {
   display: flex;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
   font-size: 250%;
   float: left;
   display: block;
@@ -40,18 +44,36 @@ td {
 .holesToSolve {
   height: 2em;
   width: 2em;
-  border-width: 0;
+  border-width: 2px;
   /* background-color: papayawhip; */
   /* font-size: 0.4em; */
   text-align: center;
   /* margin-top: 0.25em; */
   /* margin-bottom: 0.25em; */
   /* font-weight: bold; */
+  border-radius: 10px;
+  border-color: greenyellow;
+  justify-content: center;
+  padding: 0.3em;
+  font-size: medium;
+  font-weight: bolder;
+  /* min-height: 2vh; */
 }
 
+/* .holesToSolve {
+  background: linear-gradient(100deg, #402, #006);
+  padding: 2em;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+} */
+
 #gameTimeLeft {
+  /* margin-top: 10px; */
   font-size: 2.5em;
-  position: absolute;
+  position: relative;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
@@ -66,7 +88,7 @@ td {
 
 #mCount {
   font-size: 2.5em;
-  position: absolute;
+  position: relative;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);

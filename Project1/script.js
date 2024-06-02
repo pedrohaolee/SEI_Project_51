@@ -3,7 +3,7 @@ let counter = 0;
 let sudokuGenerated = false;
 const sudokuTable = document.querySelector("#sudokuTable");
 let mistakeCounter = 0;
-const timeLimit = 10;
+// const timeLimit = 10;
 
 // Define functions used in Sudoku generation
 
@@ -242,6 +242,7 @@ function startTimer(timeLimit) {
     }
     if (timeLeft === 0) {
       alert("Time is up!!!");
+      document.getElementById("gameTimeLeft").style.color = "#f5f5f5";
       clearInterval(myTimer);
     }
   }, 1000);
@@ -254,7 +255,7 @@ function checkSudokuGenFinish() {
   }
 }
 
-function startGamePlay(holeNum) {
+function startGamePlay(holeNum, timeLimit) {
   document.getElementById("sudokuTable").innerHTML = "";
   const solvedMat = solveSudoku(initializeGrid());
   console.log(solvedMat);
