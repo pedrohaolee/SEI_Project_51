@@ -265,23 +265,25 @@ function startGamePlay(holeNum, timeLimit) {
   startTimer(timeLimit);
   document.getElementById("mCount").innerText =
     "Mistake: " + mistakeCounter + "/3";
-  sudokuTable.addEventListener("keyup", (event) => {
-    cellID = event.target.id;
-    cellIDSplit = [...cellID];
-    cellValue = event.target.value;
-    console.log(cellID);
-    // console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
-    if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-      mistakeCounter++;
-      document.getElementById(cellID).style.backgroundColor = "red";
-      document.getElementById("mCount").innerText =
-        "Mistake: " + mistakeCounter + "/3";
-      // console.log(document.getElementById("mCount"));
-      if (mistakeCounter >= 3) alert("three strikes, you are out! ");
-    }
-    if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-      document.getElementById(cellID).style.background = "none";
-      animate();
+  sudokuTable.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      cellID = event.target.id;
+      cellIDSplit = [...cellID];
+      cellValue = event.target.value;
+      console.log(cellID);
+      // console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
+      if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+        mistakeCounter++;
+        document.getElementById(cellID).style.backgroundColor = "red";
+        document.getElementById("mCount").innerText =
+          "Mistake: " + mistakeCounter + "/3";
+        // console.log(document.getElementById("mCount"));
+        if (mistakeCounter >= 3) alert("three strikes, you are out! ");
+      }
+      if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
+        document.getElementById(cellID).style.background = "none";
+        animate();
+      }
     }
   });
 
