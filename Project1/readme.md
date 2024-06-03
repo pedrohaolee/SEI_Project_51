@@ -13,11 +13,17 @@ The puzzle starts with some cells pre-filled with numbers, providing clues that 
 Upon starting the game, the player is prompted to select a difficulty level.
 ![initial screen](https://github.com/pedrohaolee/SEI_Project_51/blob/main/Project1/img/Initial%20Screen.jpg)
 
+---
+
 Once the level is chosen, the game begins.
 ![game play](https://github.com/pedrohaolee/SEI_Project_51/blob/main/Project1/img/GamePlay%20Screen.jpg)
 
+---
+
 If the player enters an incorrect number into the board, the cell will turn red and the mistake counter will increase by one.
 ![mistake](https://github.com/pedrohaolee/SEI_Project_51/blob/main/Project1/img/wrongcell.jpg)
+
+---
 
 Conversely, when the correct number is entered, a celebratory firework animation will display on the screen.
 ![firework](https://github.com/pedrohaolee/SEI_Project_51/blob/main/Project1/img/fireworks.jpg)
