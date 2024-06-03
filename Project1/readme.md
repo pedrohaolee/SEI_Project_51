@@ -10,4 +10,11 @@ The puzzle starts with some cells pre-filled with numbers, providing clues that 
 
 ## Game Play
 
+The player needs to first select the difficulty level.
 ![initial screen](https://github.com/pedrohaolee/SEI_Project_51/blob/main/Project1/img/Initial%20Screen.jpg)
+
+After the level is selected, the game starts
+![game play](https://github.com/pedrohaolee/SEI_Project_51/blob/main/Project1/img/GamePlay%20Screen.jpg)
+
+If the player enters the wrong number in the board, the cell color will turn red and mistake counter will go up by 1.
+![mistake]()
