@@ -43,3 +43,11 @@ The following functions ensure the proper adherence to _Sudoku_ rules and game m
 `startGamePlay()` This function initiates the game. It receives two parameters, `holeNum` and `timeLimit` from the event listener, which are determined by the button clicked by the player.
 
 &copy; The Firework class was created by [Alexander Obregon](https://medium.com/@AlexanderObregon/coding-fireworks-for-the-4th-of-july-a-fun-and-simple-html-and-javascript-tutorial-c4e999831763)
+
+## Future Improvements
+
+**Hint System:** Implement a hint system that provides players with suggestions for possible numbers to place in a cell. This can help players when they are stuck.
+
+**Leaderboard:** Create a leaderboard to display the fastest times. This can add a competitive element to the game.
+
+**Save and Load Game:** Allow players to save their current game progress and load it later. This feature is especially useful for players who want to pause and resume their game.
