@@ -9,3 +9,5 @@ Sudoku is a popular number puzzle game that tests logical thinking and problem-s
 The puzzle starts with some cells pre-filled with numbers, providing clues that guide the player towards the solution. A well-designed Sudoku puzzle has a unique solution, which can be reached through logical deduction rather than guesswork.
 
 ## Game Play
+
+![initial screen](https://github.com/pedrohaolee/SEI_Project_51/blob/main/Project1/img/Initial%20Screen.jpg)
