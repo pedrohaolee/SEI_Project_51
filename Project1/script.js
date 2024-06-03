@@ -14,7 +14,7 @@ function generateRandomizedArray(arrayLength) {
   return randomArray;
 }
 
-// Initialize the grid with 3 diagonal 3x3 matrices filled, the remaining cells contain 0
+// Initialize the grid with cells contain 0
 function initializeGrid() {
   let Mat9x9 = [];
   for (let i = 0; i < 9; i++) {
@@ -25,54 +25,6 @@ function initializeGrid() {
   }
   return Mat9x9;
 }
-
-const testMat1 = [
-  [5, 7, 1, 0, 0, 0, 0, 0, 0],
-  [6, 3, 9, 0, 0, 0, 0, 0, 0],
-  [2, 8, 4, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 7, 2, 0, 0, 0],
-  [0, 0, 0, 6, 9, 5, 0, 0, 0],
-  [0, 0, 0, 8, 3, 4, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 7, 1, 6],
-  [0, 0, 0, 0, 0, 0, 2, 5, 9],
-  [0, 0, 0, 0, 0, 0, 3, 4, 8],
-];
-
-const testMat2 = [
-  [5, 7, 1, 3, 4, 8, 6, 9, 2],
-  [6, 3, 9, 0, 0, 0, 0, 0, 0],
-  [2, 8, 4, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 7, 2, 0, 0, 0],
-  [0, 0, 0, 6, 9, 5, 0, 0, 0],
-  [0, 0, 0, 8, 3, 4, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 7, 1, 6],
-  [0, 0, 0, 0, 0, 0, 2, 5, 9],
-  [0, 0, 0, 0, 0, 0, 3, 4, 8],
-];
-
-const testMat3 = [
-  [5, 7, 1, 3, 4, 8, 6, 9, 2],
-  [6, 3, 9, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-  [0, 0, 0, 1, 7, 2, 0, 0, 0],
-  [0, 0, 0, 6, 9, 5, 0, 0, 0],
-  [0, 0, 0, 8, 3, 4, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 7, 1, 6],
-  [0, 0, 0, 0, 0, 0, 2, 5, 9],
-  [0, 0, 0, 0, 0, 0, 3, 4, 8],
-];
-
-const testMat4 = [
-  [5, 7, 1, 3, 4, 8, 6, 9, 2],
-  [6, 3, 9, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-  [2, 8, 4, 3, 4, 8, 6, 9, 2],
-];
 
 // Check if num is in the current row
 function rowSafe(inputGrid, cellPos, num) {
@@ -139,7 +91,6 @@ function solveSudoku(startingGrid) {
 }
 
 //  Set-up the display given the input matrix by adding sudoku numbers into different cells
-
 function initDisplay(inputMat) {
   const sudokuDisplayTable = document.querySelector("#sudokuTable");
   console.log(sudokuDisplayTable);
@@ -190,30 +141,6 @@ function generatePlayBoard(inputGrid, holeNum) {
   }
   return [startingGrid, holeVal];
 }
-
-// const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 5);
-// console.log(holeInfo);
-// console.log(PlayBoard);
-
-// initDisplay(PlayBoard);
-
-// sudokuTable.addEventListener("keyup", (event) => {
-//   cellID = event.target.id;
-//   cellIDSplit = [...cellID];
-//   cellValue = event.target.value;
-//   console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
-//   if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-//     mistakeCounter++;
-//     document.getElementById(cellID).style.backgroundColor = "red";
-//     document.getElementById("mCount").innerText =
-//       "Mistake: " + mistakeCounter + "/3";
-//     // console.log(document.getElementById("mCount"));
-//     if (mistakeCounter >= 3) alert("three strikes, you are out! ");
-//   }
-//   if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-//     document.getElementById(cellID).style.background = "none";
-//   }
-// });
 
 // Format the time left, such as 63 seconds will appear 01:03 instead 1:3
 function formatTime(timeSec) {
@@ -286,71 +213,10 @@ function startGamePlay(holeNum, timeLimit) {
       }
     }
   });
-
-  // console.log(holeNum);
-  // const sudokuTable = document.querySelector("#sudokuTable");
-  // let mistakeCounter = 0;
-  // sudokuTable.addEventListener("keyup", (event) => {
-  //   cellID = event.target.id;
-  //   cellIDSplit = [...cellID];
-  //   cellValue = event.target.value;
-  //   console.log(solvedMat[cellIDSplit[3]][cellIDSplit[7]]);
-  //   if (cellValue != solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-  //     mistakeCounter++;
-  //     document.getElementById(cellID).style.backgroundColor = "red";
-  //     document.getElementById("mCount").innerText =
-  //       "Mistake: " + mistakeCounter + "/3";
-  //     // console.log(document.getElementById("mCount"));
-  //     if (mistakeCounter >= 3) alert("three strikes, you are out! ");
-  //   }
-  //   if (cellValue == solvedMat[cellIDSplit[3]][cellIDSplit[7]]) {
-  //     document.getElementById(cellID).style.background = "none";
-  //   }
-  // });
 }
-
-// initialize the screen for game play
-// const solvedMat = solveSudoku(initializeGrid());
-// checkSudokuGenFinish();
-// document.getElementById("playfield").innerHTML =
-//   '<table id="sudokuTable"></table><footer id="mCount">Mistake: 0/3</footer><footer id="gameTimeLeft"></footer>;';
-// console.log(sudokuGenerated);
-// console.log(solvedMat);
-// const [PlayBoard, holeInfo] = generatePlayBoard(solvedMat, 30);
-
-// initDisplay(PlayBoard);
-// startTimer(timeLimit);
-
-// console.log(solvedMat);
-
-// console.log(formatTime(39));
-
-// const a1 = "row4col4";
-// const b1 = [...a1];
-// console.log(b1[3], b1[7]);
-// console.log(holeInfo);
-// initDisplay(PlayBoard, holeInfo);
-
-// initDisplay(testMat1);
-
-// console.log(sudokuDisplayTable);
-// addToDisplay(testMat1);
-// newDiv.innerText = sudokuMat;
-// document.querySelector("");
-// console.log();
-
-// console.log(solveSudoku(InitializeGrid()));
-
-// console.log(counter);
-// console.log(solveSudoku(testMat2));
-// console.log(solveSudoku(testMat3));
-// console.log(solveSudoku(testMat4));
-
-// console.log(testMat1.length());
 
 // Below is the Fireworks animation from Alexander Obregon
 // https://medium.com/@AlexanderObregon/coding-fireworks-for-the-4th-of-july-a-fun-and-simple-html-and-javascript-tutorial-c4e999831763
-
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 // console.log(ctx);
